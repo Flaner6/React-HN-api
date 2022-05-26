@@ -1,22 +1,34 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
 import useFetch from "../hooks/useFetch";
 import './SearchBar.css'
 
-function SearchBar({placeholder}) {  
+
+function SearchBar({placeholder,isHidden}) {  
     const { data, setData } = useFetch();
     console.log(data['results']['hits'])
-    var results = data['results']['hits']
+    let results = data['results']['hits']
+    console.log("is hidden:"+isHidden)
+
+
+    useEffect(() => {
+  
+        results = data['results']['hits'];
+      },[data]);
     
     if (results !== undefined){
-        const iterator = results.values();
+        const firstkey = results.pop();
+        let url = firstkey['url']
+        document.getElementById('myLink').setAttribute("href",url);
 
-        for (const value of iterator) {
-            const url = value['url'];
-            console.log(url);
-            document.getElementById('myLink').setAttribute("href",url);
 
-            break;
-          }
+        // for (const value of iterator) {
+        //     const url = value['url'];
+        //     console.log(url);
+        //     document.getElementById('myLink').setAttribute("href",url);
+
+        //     break;
+        //   }
+
     }
 
     return (
@@ -27,7 +39,7 @@ function SearchBar({placeholder}) {
                 placeholder={placeholder}
                 value={data.slug}
                 
-                
+
                 onChange={(e) => setData({ ...data, slug: e.target.value })}
                 />
                 
@@ -36,8 +48,8 @@ function SearchBar({placeholder}) {
                 </a>  
                             
                 <div className="searchIcon"></div>
-                <div className="searchResults">
-                    {results != undefined && results.length != 0 && (
+                <div className="searchResults" hidden= {isHidden}>
+                    {results !== undefined && results.length > 0 &&  (
                         <div className="dataResult">
                     
                         {results.slice(0, 10).map((result) => {

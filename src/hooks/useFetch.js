@@ -10,6 +10,9 @@ const useFetch = () => {
   });
   
   useEffect(() => {
+    if (data.slug.length<=2){
+      setData({ ...data, results: []})
+    }
 
     if (data.slug.length>2 ) {
     const timeoutId = setTimeout(() => {
