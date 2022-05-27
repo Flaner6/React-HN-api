@@ -13,8 +13,11 @@ import { Link } from "react-router-dom";
 function Home(){
   const [isHidden, setisHidden] = React.useState(true);
   function onClickElsewhere (){
-  setisHidden(!isHidden)
+  setisHidden(true)
   }
+  function onClickHere (){
+    setisHidden(false)
+    }
 
 
 
@@ -24,7 +27,7 @@ function Home(){
     <div className="container1" onClick={onClickElsewhere} >
       <div className="container">
         {/* <h1>Hacker News</h1> */}
-        <div className="main">
+        <div className="main" onClick={onClickElsewhere}>
          <div className="title"  >Search</div>
           <SearchBar  placeholder="Search title" isHidden = {isHidden}/> 
         </div>
