@@ -48,8 +48,8 @@ function SearchBar({placeholder,isHidden}) {
                 </a>  
                             
                 <div className="searchIcon"></div>
-                <div className="searchResults" hidden= {isHidden}>
-                    {results !== undefined && results.length > 0 &&  (
+                <div className="searchResults" >
+                    {results !== undefined && results.length > 0 && isHidden == false&&  (
                         <div className="dataResult">
                     
                         {results.slice(0, 10).map((result) => {

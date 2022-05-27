@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, {useState} from "react";
 import './Home.css';
 // importing Link from react-router-dom to navigate to 
 // different end points.
@@ -11,9 +11,9 @@ import { Link } from "react-router-dom";
 
   
 function Home(){
-  let isHidden = false;
+  const [isHidden, setisHidden] = React.useState(true);
   function onClickElsewhere (){
-  isHidden = true
+  setisHidden(!isHidden)
   }
 
 
@@ -21,7 +21,7 @@ function Home(){
 
 
   return (
-    <div className="container1">
+    <div className="container1" onClick={onClickElsewhere} >
       <div className="container">
         {/* <h1>Hacker News</h1> */}
         <div className="main">
