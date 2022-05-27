@@ -27,7 +27,7 @@ function Home(){
     <div className="container1" onClick={onClickElsewhere} >
       <div className="container">
         {/* <h1>Hacker News</h1> */}
-        <div className="main" onClick={onClickElsewhere}>
+        <div className="main" onClick={onClickHere}>
          <div className="title"  >Search</div>
           <SearchBar  placeholder="Search title" isHidden = {isHidden}/> 
         </div>
