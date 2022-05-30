@@ -15,8 +15,8 @@ function SearchBar({placeholder,isHidden}) {
         results = data['results']['hits'];
       },[data]);
     
-    if (results !== undefined){
-        const firstkey = results.pop();
+    if (results !== undefined ){
+        const firstkey = results[0];
         let url = firstkey['url']
         document.getElementById('myLink').setAttribute("href",url);
 
@@ -49,7 +49,7 @@ function SearchBar({placeholder,isHidden}) {
                             
                 <div className="searchIcon"></div>
                 <div className="searchResults" >
-                    {results !== undefined && results.length > 0 && isHidden == false&&  (
+                    {results !== undefined && results.length > 0 && isHidden == false && (
                         <div className="dataResult">
                     
                         {results.slice(0, 10).map((result) => {

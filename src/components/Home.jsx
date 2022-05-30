@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
   
 function Home(){
-  const [isHidden, setisHidden] = React.useState(false);
+  const [isHidden, setisHidden] = React.useState(true);
   function onClickElsewhere (){
   setisHidden(!isHidden)
   }

@@ -8,13 +8,13 @@ const useFetch = () => {
     slug: "",
     results: [],
   });
-  
+
   useEffect(() => {
-    if (data.slug.length<=2){
+    if (data.slug.length<=2 ){
       setData({ ...data, results: []})
     }
 
-    if (data.slug.length>2 ) {
+    if (data.slug.length>2 && data.results != undefined && /^[A-Za-z][A-Za-z0-9]*$/.test(data.slug) === true) {
     const timeoutId = setTimeout(() => {
         const fetch = async () => {
         try {
@@ -25,7 +25,7 @@ const useFetch = () => {
         }
         };
         fetch();
-    }, 500);
+    }, 600);
     return () => clearTimeout(timeoutId);
     }
 }, [data.slug]);
