@@ -38,6 +38,7 @@ function SearchBar({placeholder,isHidden}) {
                 type ="text" 
                 placeholder={placeholder}
                 value={data.slug}
+                className ="searchBar"
                 
 
                 onChange={(e) => setData({ ...data, slug: e.target.value })}
@@ -55,7 +56,8 @@ function SearchBar({placeholder,isHidden}) {
                         {results.slice(0, 10).map((result) => {
                             return (
                             <a className="dataItem" href={result.url} target="_blank">
-                                <p>{result.title} </p>
+                                <p className="upper">{result.title}</p>
+                                <p className="lower">points: {result.points} | by {result.author} | comments: {result.num_comments}</p>
                             </a>
                             );
                         })}
